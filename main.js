@@ -55,3 +55,19 @@ let snack = new Producto ("Snack", 200,5);
 //------------------------------------------------------------------ Cargar stock ------------------------------------------------------------------
 
 
+
+function CargarProductos(){
+ 
+    let nombre = prompt("Ingresa el nombre del nuevo producto:")
+    let precio = parseFloat (prompt("Ingresa el precio del producto:"))
+    let stock = parseInt (prompt ("Ingresa el stock del producto:"))
+
+    let miProducto = new Producto (nombre,precio,stock)
+
+    let cantidadVender = parseInt (prompt ("Ingrese la cantidad a vender:"))
+
+    miProducto.vender(cantidadVender);
+    return miProducto; 
+}
+
+
