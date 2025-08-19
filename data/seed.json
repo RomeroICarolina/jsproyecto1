@@ -1,0 +1,18 @@
+[
+  {
+    "id": "t1",
+    "nombre": "Lucía Díaz",
+    "email": "lucia@mail.com",
+    "fecha": "2025-09-02",
+    "tratamiento": "Toxina botulínica",
+    "notas": "Frente y entrecejo"
+  },
+  {
+    "id": "t2",
+    "nombre": "Marcos Núñez",
+    "email": "marcos@mail.com",
+    "fecha": "2025-09-05",
+    "tratamiento": "Láser CO2",
+    "notas": "Cicatriz post-quirúrgica"
+  }
+]

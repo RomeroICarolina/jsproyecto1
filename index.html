@@ -1,13 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simulador de Turnos</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <h1> 1° Entrega JS </h1>
+  <main class="container">
+    <h1>Simulador de Turnos</h1>
+    <p class="sub">Alta, edición, borrado, filtros, orden y persistencia con <code>localStorage</code>.</p>
 
-<script src="main.js"></script>    
+    <!-- Formulario -->
+    <section class="panel">
+      <h2>Cargar / Editar turno</h2>
+      <form id="form" novalidate>
+        <input type="hidden" id="id" />
+
+        <div class="grid">
+          <label>Nombre y apellido
+            <input id="nombre" placeholder="Ej: Ana Pérez" required />
+            <small class="error" data-err-for="nombre"></small>
+          </label>
+
+          <label>Email
+            <input id="email" type="email" placeholder="ana@mail.com" required />
+            <small class="error" data-err-for="email"></small>
+          </label>
+
+          <label>Fecha
+            <input id="fecha" type="date" required />
+            <small class="error" data-err-for="fecha"></small>
+          </label>
+
+          <label>Tratamiento
+            <select id="tratamiento" required>
+              <option value="">Elegí…</option>
+              <option>Toxina botulínica</option>
+              <option>Láser CO2</option>
+              <option>Rinomodelación</option>
+              <option>Consulta inicial</option>
+            </select>
+            <small class="error" data-err-for="tratamiento"></small>
+          </label>
+
+          <label class="full">Notas
+            <textarea id="notas" rows="2" placeholder="Detalle breve…"></textarea>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button type="submit">Guardar</button>
+          <button type="button" id="btn-cancelar" class="secondary">Cancelar edición</button>
+          <button type="reset" class="ghost">Limpiar</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Controles -->
+    <section class="panel">
+      <h2>Listado</h2>
+      <div class="controls">
+        <input id="q" placeholder="Buscar por nombre o email…" />
+        <select id="filtro-tratamiento" title="Filtrar por tratamiento">
+          <option value="">Todos los tratamientos</option>
+          <option>Toxina botulínica</option>
+          <option>Láser CO2</option>
+          <option>Rinomodelación</option>
+          <option>Consulta inicial</option>
+        </select>
+        <select id="orden" title="Ordenar">
+          <option value="fecha_asc">Fecha ↑</option>
+          <option value="fecha_desc">Fecha ↓</option>
+          <option value="nombre_asc">Nombre A–Z</option>
+          <option value="nombre_desc">Nombre Z–A</option>
+        </select>
+      </div>
+
+      <table class="tabla">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Nombre</th>
+            <th>Tratamiento</th>
+            <th>Email</th>
+            <th>Notas</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+
+      <p id="stats" class="stats"></p>
+    </section>
+  </main>
+
+  <!-- Toasts -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Modal confirm -->
+  <dialog id="modal" class="modal">
+    <form method="dialog" class="modal-box">
+      <h3 id="modal-title">Confirmar</h3>
+      <p id="modal-msg">¿Estás seguro?</p>
+      <div class="modal-actions">
+        <button value="cancel" class="secondary">Cancelar</button>
+        <button value="ok">Aceptar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>

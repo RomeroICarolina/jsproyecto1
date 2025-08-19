@@ -1,0 +1,48 @@
+:root{
+  --bg:#0f172a; --panel:#111827; --muted:#9ca3af; --text:#e5e7eb;
+  --accent:#22d3ee; --ok:#10b981; --danger:#ef4444; --warn:#f59e0b;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,Segoe UI,Roboto,Ubuntu,Arial;background:#0b1022;color:var(--text)}
+.container{max-width:980px;margin:32px auto;padding:0 16px}
+h1{margin:.2rem 0 1rem}
+.sub{color:var(--muted);margin-top:-8px}
+.panel{background:var(--panel);border:1px solid #1f2937;border-radius:var(--radius);padding:18px;margin:16px 0;box-shadow:0 6px 30px rgba(0,0,0,.25)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.grid .full{grid-column:1/-1}
+label{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted)}
+input,select,textarea{background:#0b1022;color:var(--text);border:1px solid #1f2937;border-radius:10px;padding:10px 12px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+.error{color:#fca5a5;min-height:1.2em}
+.actions{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+button{background:var(--accent);color:#002b2b;border:0;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer}
+button.secondary{background:#334155;color:#e2e8f0}
+button.ghost{background:transparent;border:1px solid #334155;color:#cbd5e1}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.controls>*{flex:1 1 200px}
+.tabla{width:100%;border-collapse:collapse}
+.tabla th,.tabla td{border-top:1px solid #1f2937;padding:10px;vertical-align:top}
+.tabla th{text-align:left;color:var(--muted);font-weight:600}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;background:#0b1022;border:1px solid #1f2937}
+.row-actions{display:flex;gap:8px}
+.row-actions .del{background:var(--danger);color:#fff}
+.stats{color:var(--muted);margin-top:10px}
+
+/* Toast */
+.toast{position:fixed;inset:auto 16px 16px auto;min-width:240px;max-width:90vw;padding:12px 14px;border-radius:10px;background:#0b1022;border:1px solid #1f2937;box-shadow:0 10px 30px rgba(0,0,0,.35);opacity:0;transform:translateY(10px);transition:.25s}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.ok{border-color:var(--ok)}
+.toast.err{border-color:var(--danger)}
+.toast.warn{border-color:var(--warn)}
+
+/* Modal */
+.modal::backdrop{background:rgba(0,0,0,.45)}
+.modal .modal-box{background:#0b1022;border:1px solid #1f2937;border-radius:14px;padding:16px;color:var(--text);min-width:280px}
+.modal h3{margin:.2rem 0 8px}
+.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}
+
+@media (max-width:720px){
+  .grid{grid-template-columns:1fr}
+  .tabla td:nth-child(5){display:none}
+}
